@@ -117,7 +117,7 @@ int main(int argc, char* argv[]) {
     EthArpPacket packet;
     EthArpPacket packet_broad, packet_atk;
     packet_broad.eth_.dmac_ = Mac("FF:FF:FF:FF:FF:FF");
-    int i;
+    int i, k;
     for(i = 0; i < 6; i++){
     packet_broad.eth_.smac_.mac_[i] = my_mac_addr[i];
     }
@@ -135,9 +135,9 @@ int main(int argc, char* argv[]) {
     Ip sender_ip;
     Ip target_ip;
     int j = (argc-2) / 2;
-    for(i = 1; i <= j; i++){
-        sender_ip = htonl(Ip(argv[2 * i]));
-        target_ip = htonl(Ip(argv[2 * i + 1]));
+    for(k = 1; k <= j; k++){
+        sender_ip = htonl(Ip(argv[2 * k]));
+        target_ip = htonl(Ip(argv[2 * k + 1]));
 
         packet_broad.arp_.tip_ = sender_ip;
 
